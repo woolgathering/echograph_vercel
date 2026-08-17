@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: oklch(98.3% 0.008 80); }
+  a { text-decoration: none; }
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); min-height: 100vh;">
+
+  <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
+    <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
+    <div style="display: flex; gap: 36px; font-size: 14px;">
+      <a href="about.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">About</a>
+      <a href="services.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Services</a>
+      <a href="work.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Work</a>
+      <a href="products.html" style="color: {{ accent }};">Products</a>
+      <a href="contact.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Contact</a>
+    </div>
+  </nav>
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Products</div>
+    <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 40px; line-height: 1.2; margin: 0 0 24px; max-width: 20ch;">Software, when nothing off-the-shelf will do.</h1>
+    <p style="font-size: 17px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 60ch; margin: 0;">Most of what I build starts as a solution to someone else's problem and occasionally one turns into something worth releasing on its own.</p>
+  </div>
+
+  <div style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); margin: 40px 0 0; padding: 88px 48px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Hider — Coming Soon</div>
+
+        <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 34px; line-height: 1.25; margin: 0 0 24px; max-width: 16ch;">A hidden track, in plain sight.</h2>
+
+        <p style="font-size: 16px; line-height: 1.7; color: oklch(75% 0.01 80); max-width: 48ch; margin: 0 0 24px;">Hider encodes a second signal into the ultrasonic band of high-sample-rate audio — inaudible (except to your dog), riding inside the mix,. An encoding /decoding plugin and a standalone decoder, built for anyone who wants to hide something in the music itself.</p>
+
+        <p style="font-size: 14px; line-height: 1.6; color: oklch(60% 0.01 80); max-width: 48ch; margin: 0 0 32px;">Requires audio at a high enough sample rate to carry an ultrasonic band. Encode with the plugin; decode with either the plugin or the standalone app.</p>
+
+        <div style="display: flex; gap: 10px; max-width: 420px;">
+          <input type="email" placeholder="Your email" style="flex: 1; background: transparent; border: 1px solid oklch(45% 0.015 80); color: oklch(95% 0.005 80); padding: 12px 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px;">
+          <button style="background: {{ accent }}; color: oklch(98% 0.005 80); border: none; padding: 12px 22px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer;">Notify me</button>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; height: 220px; position: relative;">
+        <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;">
+          <sc-for list="{{ waveformPoints }}" as="pt" hint-placeholder-count="1">
+            <polyline points="{{ pt.audible }}" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
+            <polyline points="{{ pt.hidden }}" fill="none" stroke="{{ accent }}" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
+          </sc-for>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 88px 48px; text-align: center;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(55% 0.015 80);">More to come</div>
+  </div>
+
+  <div style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
+    <div style="font-family: 'Source Serif 4', serif; font-size: 16px; color: oklch(22% 0.015 80);">Echograph</div>
+    <div>© 2026 Echograph. All rights reserved.</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900},
+  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#a8593c&quot;, &quot;options&quot;: [&quot;#a8593c&quot;, &quot;#5b6b8c&quot;, &quot;#5c7a5c&quot;, &quot;#8a7a4a&quot;], &quot;tsType&quot;: &quot;string&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accentColor ?? '#a8593c';
+    const audible = Array.from({length: 40}, (_, i) => `${i*10},${100 + Math.sin(i*0.5)*40*Math.exp(-i*0.03)}`).join(' ');
+    const hidden = Array.from({length: 40}, (_, i) => `${i*10},${100 + Math.sin(i*1.7+1)*10}`).join(' ');
+    const waveformPoints = [{ audible, hidden }];
+    return { accent, waveformPoints };
+  }
+}
+
+</script>
+</body>
+</html>

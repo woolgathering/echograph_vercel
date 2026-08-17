@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: oklch(98.3% 0.008 80); }
+  a { text-decoration: none; }
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); min-height: 100vh;">
+
+  <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
+    <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
+    <div style="display: flex; gap: 36px; font-size: 14px;">
+      <a href="about.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">About</a>
+      <a href="services.html" style="color: {{ accent }};">Services</a>
+      <a href="work.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Work</a>
+      <a href="products.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Products</a>
+      <a href="contact.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Contact</a>
+    </div>
+  </nav>
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Services</div>
+    <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 44px; line-height: 1.2; margin: 0 0 24px; max-width: 20ch;">Consulting across the signal chain.</h1>
+    <p style="font-size: 17px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 62ch; margin: 0;">I work as an independent consultant on audio and signal-processing problems that don't have an off-the-shelf answer: for composers and performers, institutions, and researchers. Below is roughly what that looks like in practice; if your project doesn't fit neatly into one of these, I don't fit neatly into them either. <a href="contact.html" style="color: {{ accent }}; border-bottom: 1px solid {{ accent }}; padding-bottom: 1px;">Get in touch</a> instead.</p>
+  </div>
+
+  <div style="position: relative; height: 420px; overflow: hidden; margin: 0 0 16px;">
+    <img src="assets/erasure_photo5.jpg" alt="Immersive installation" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+    <div style="position: absolute; left: 48px; bottom: 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: oklch(98% 0.005 80); background: oklch(15% 0.01 80 / 0.55); padding: 6px 12px; border-radius: 2px;">Erasure @ Calit2</div>
+  </div>
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 40px 48px 96px;">
+    <sc-for list="{{ services }}" as="svc" hint-placeholder-count="5">
+      <div style="display: grid; grid-template-columns: 0.5fr 1.5fr; gap: 48px; padding: 44px 0; border-top: 1px solid oklch(90% 0.008 80);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: oklch(50% 0.015 80); letter-spacing: 0.04em;">{{ svc.tag }}</div>
+        <div>
+          <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 24px; margin: 0 0 14px;">{{ svc.title }}</h2>
+          <p style="font-size: 15px; line-height: 1.7; color: oklch(38% 0.015 80); margin: 0 0 16px; max-width: 60ch;">{{ svc.description }}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ svc.examples }}" as="ex" hint-placeholder-count="2">
+              <span style="font-size: 12px; padding: 5px 12px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(35% 0.015 80);">{{ ex }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+    <div style="border-top: 1px solid oklch(90% 0.008 80);"></div>
+  </div>
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 8px 48px 96px;">
+    <div style="background: oklch(95.5% 0.008 80); padding: 56px; border-radius: 2px; display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 48px; align-items: center;">
+      <div>
+        <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 26px; margin: 0 0 14px;">Not sure which of these fits?</h2>
+        <p style="font-size: 15px; line-height: 1.7; color: oklch(38% 0.015 80); margin: 0; max-width: 56ch;">Most projects I take on are some combination of the above. Tell me what you're working on and I'll tell you honestly whether it's something I'm suited for.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+        <a href="contact.html" style="display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border-radius: 2px; font-size: 15px; white-space: nowrap;">Get in touch</a>
+        <a href="#" style="font-size: 13px; color: oklch(45% 0.015 80); border-bottom: 1px solid oklch(75% 0.01 80); padding-bottom: 2px;">Or book 15 minutes &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
+    <div style="font-family: 'Source Serif 4', serif; font-size: 16px; color: oklch(22% 0.015 80);">Echograph</div>
+    <div>&copy; 2026 Echograph. All rights reserved.</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#a8593c&quot;, &quot;options&quot;: [&quot;#a8593c&quot;, &quot;#5b6b8c&quot;, &quot;#5c7a5c&quot;, &quot;#8a7a4a&quot;], &quot;tsType&quot;: &quot;string&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accentColor ?? '#a8593c';
+    const services = [
+      { tag: '01 — DSP', title: 'Signal Processing & Effects', description: 'Custom audio effects and analysis algorithms designed for a specific creative or technical problem.', examples: ['Real-time effects', 'Offline analysis', 'Custom DSP chains'] },
+      { tag: '02 — Space', title: 'Spatialization', description: 'Multichannel and object-based sound spatialization for concert works, installations, and immersive listening environments.', examples: ['Multichannel diffusion', 'VBAP, Ambisonics, DBAP', 'Installation audio'] },
+      { tag: '03 — Software', title: 'Algorithm & Software Design', description: 'Bespoke audio software, from prototype to plugin, for composers and studios who need a tool that doesn\u2019t exist yet.', examples: ['Plugin development', 'SuperCollider / Pd systems', 'Real-time performance tools'] },
+      { tag: '04 — Direction', title: 'Creative Audio Direction', description: 'Direction and technical collaboration on experimental audio and new-music projects, from concept through performance.', examples: ['Concert electronics', 'New-music collaboration', 'Technical coordination'] },
+      { tag: '05 — Research', title: 'Signal Analysis for Research', description: 'Signal-processing consulting applied outside of music, including EEG and other time-series data where the same analytical tools apply.', examples: ['EEG signal analysis', 'Time-series processing'] }
+    ];
+    return { accent, services };
+  }
+}
+
+</script>
+</body>
+</html>
