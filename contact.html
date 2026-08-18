@@ -56,52 +56,55 @@
       <div style="border-top: 1px solid oklch(90% 0.008 80); padding-top: 28px;">
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: oklch(50% 0.015 80); margin-bottom: 8px;">Already know you want to talk?</div>
         <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); max-width: 40ch; margin: 0 0 16px;">Skip the form and grab 15 minutes on the calendar.</p>
-        <a href="#" style="display: inline-flex; padding: 12px 24px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Book 15 minutes →</a>
+        <a href="https://calendly.com/jacob-echograph/15-minute-coffee-chat" target="_blank" rel="noopener noreferrer" style="display: inline-flex; padding: 12px 24px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Book 15 minutes →</a>
       </div>
     </div>
 
     <div>
-      <form style="display: flex; flex-direction: column; gap: 28px;">
+      <form action="https://formsubmit.co/hello@echograph.studio" method="POST" style="display: flex; flex-direction: column; gap: 28px;">
+        <input type="hidden" name="_subject" value="New inquiry from echograph.studio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
           <div>
             <label style="display: block; font-size: 13px; color: oklch(45% 0.015 80); margin-bottom: 8px;">Name</label>
-            <input type="text" placeholder="Your name" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
+            <input type="text" name="Name" required placeholder="Your name" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
           </div>
           <div>
             <label style="display: block; font-size: 13px; color: oklch(45% 0.015 80); margin-bottom: 8px;">Email</label>
-            <input type="email" placeholder="you@example.com" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
+            <input type="email" name="Email" required placeholder="you@example.com" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
           </div>
         </div>
 
         <div>
           <label style="display: block; font-size: 13px; color: oklch(45% 0.015 80); margin-bottom: 8px;">Organization (if any)</label>
-          <input type="text" placeholder="Ensemble, institution, label…" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
+          <input type="text" name="Organization" placeholder="Ensemble, institution, label…" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80);">
         </div>
 
         <div>
           <label style="display: block; font-size: 13px; color: oklch(45% 0.015 80); margin-bottom: 12px;">What kind of project is this?</label>
           <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 9px 16px; border: 1px solid oklch(82% 0.01 80); border-radius: 20px; color: oklch(35% 0.015 80); cursor: pointer;">
-                <input type="radio" name="project-type" style="margin: 0;">Composition & performance
+                <input type="radio" name="Project type" value="Composition & performance" style="margin: 0;">Composition & performance
               </label>
             <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 9px 16px; border: 1px solid oklch(82% 0.01 80); border-radius: 20px; color: oklch(35% 0.015 80); cursor: pointer;">
-                <input type="radio" name="project-type" style="margin: 0;">Institution / venue
+                <input type="radio" name="Project type" value="Institution / venue" style="margin: 0;">Institution / venue
               </label>
             <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 9px 16px; border: 1px solid oklch(82% 0.01 80); border-radius: 20px; color: oklch(35% 0.015 80); cursor: pointer;">
-                <input type="radio" name="project-type" style="margin: 0;">Research
+                <input type="radio" name="Project type" value="Research" style="margin: 0;">Research
               </label>
             <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 9px 16px; border: 1px solid oklch(82% 0.01 80); border-radius: 20px; color: oklch(35% 0.015 80); cursor: pointer;">
-                <input type="radio" name="project-type" style="margin: 0;">Plugin Support
+                <input type="radio" name="Project type" value="Plugin Support" style="margin: 0;">Plugin Support
               </label>
             <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 9px 16px; border: 1px solid oklch(82% 0.01 80); border-radius: 20px; color: oklch(35% 0.015 80); cursor: pointer;">
-                <input type="radio" name="project-type" style="margin: 0;">Something else
+                <input type="radio" name="Project type" value="Something else" style="margin: 0;">Something else
               </label>
           </div>
         </div>
 
         <div>
           <label style="display: block; font-size: 13px; color: oklch(45% 0.015 80); margin-bottom: 8px;">Project details</label>
-          <textarea rows="6" placeholder="What are you working on, and what would help?" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80); resize: vertical; font-family: 'IBM Plex Sans', sans-serif;"></textarea>
+          <textarea rows="6" name="Project details" placeholder="What are you working on, and what would help?" style="width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid oklch(80% 0.01 80); background: transparent; padding: 10px 0; font-size: 15px; color: oklch(22% 0.015 80); resize: vertical; font-family: 'IBM Plex Sans', sans-serif;"></textarea>
         </div>
 
         <button type="submit" style="align-self: flex-start; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border: none; padding: 14px 32px; font-size: 15px; border-radius: 2px; cursor: pointer; margin-top: 8px;">Send</button>
