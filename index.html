@@ -13,72 +13,88 @@
 <meta property="og:image" content="https://echograph.studio/assets/erasure_photo5-web.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221f1c'/%3E%3Ctext x='32' y='45' font-family='Georgia, serif' font-size='38' fill='%23a8593c' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
-<script src="./support.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: oklch(98.3% 0.008 80); font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); }
+  a { text-decoration: none; }
+  .nav-link { color: oklch(22% 0.015 80); transition: color 0.15s; }
+  .nav-link:hover { color: #a8593c; }
+  input, textarea, select { font-family: 'IBM Plex Sans', sans-serif; }
+  input::placeholder, textarea::placeholder { color: oklch(60% 0.01 80); }
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: oklch(98.3% 0.008 80); }
-  a { text-decoration: none; }
-</style>
-</helmet>
-<div style="font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); min-height: 100vh;">
+<div style="min-height: 100vh;">
 
   <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
-    <div style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em;">Echograph</div>
+    <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
     <div style="display: flex; gap: 36px; font-size: 14px;">
-      <a href="about.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">About</a>
-      <a href="services.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Services</a>
-      <a href="work.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Work</a>
-      <a href="products.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Products</a>
-      <a href="contact.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Contact</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="work.html" class="nav-link">Work</a>
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </nav>
 
   <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 120px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;">
-
     <div>
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Audio &amp; Signal Processing</div>
-
-      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 52px; line-height: 1.15; margin: 0 0 28px; max-width: 14ch;">{{ headline }}</h1>
-
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Audio &amp; Signal Processing</div>
+      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 52px; line-height: 1.15; margin: 0 0 28px; max-width: 14ch;">Signal processing for people who make sound.</h1>
       <p style="font-size: 17px; line-height: 1.65; color: oklch(38% 0.015 80); max-width: 46ch; margin: 0 0 40px;">Consulting on signal processing, spatialization, and audio software for composers, ensembles, institutions, and researchers, grounded in a PhD in computer music and years of work in concert and studio.</p>
-
       <div style="display: flex; align-items: center; gap: 28px;">
         <a href="contact.html" style="display: inline-flex; align-items: center; padding: 14px 28px; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border-radius: 2px; font-size: 15px;">Work with me</a>
         <a href="products.html" style="font-size: 14px; color: oklch(45% 0.015 80); border-bottom: 1px solid oklch(75% 0.01 80); padding-bottom: 2px;">Also building Hider, a hidden-track plugin — coming soon</a>
       </div>
     </div>
-
     <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 260px; padding: 0 12px;">
-      <sc-for list="{{ bars }}" as="bar" hint-placeholder-count="28">
-        <div style="width: 100%; max-width: 12px; background: {{ accent }}; opacity: {{ bar.opacity }}; height: {{ bar.height }}; border-radius: 1px;"></div>
-      </sc-for>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 18%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 34%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 52%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.71; height: 29%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.83; height: 61%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 44%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 72%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 38%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.71; height: 55%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.83; height: 26%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 48%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 66%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 31%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.71; height: 58%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.83; height: 40%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 70%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 24%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 49%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.71; height: 63%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.83; height: 35%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 53%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 20%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 45%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.71; height: 68%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.83; height: 32%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.35; height: 57%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.47; height: 41%; border-radius: 1px;"></div>
+        <div style="width: 100%; max-width: 12px; background: #a8593c; opacity: 0.59; height: 60%; border-radius: 1px;"></div>
     </div>
-
   </div>
 
   <div id="about" style="border-top: 1px solid oklch(90% 0.008 80); max-width: 1280px; margin: 0 auto; padding: 88px 48px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
-
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }};">About</div>
-
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c;">About</div>
     <div>
       <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 32px; line-height: 1.3; margin: 0 0 28px; max-width: 22ch;">A practicing artist with technical ability.</h2>
-
       <p style="font-size: 16px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 60ch; margin: 0 0 20px;">I hold a PhD in computer music with a dissertation on periodicity transforms in discrete-time audio, alongside a BA and MM in composition. My work moves between concert stage and code editor: as a practicing composer and performer with concerts and exhibitions internationally, and as a developer building the tools that make new sound possible.</p>
-
       <p style="font-size: 16px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 60ch; margin: 0 0 32px;">I've consulted on academic and creative projects for composers including Roger Reynolds and Alvin Lucier, performed with red fish, blue fish, and worked alongside Steven Schick, plus a run of work applying the same signal-processing background to EEG research.</p>
-
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <sc-for list="{{ focusAreas }}" as="area" hint-placeholder-count="5">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">{{ area }}</span>
-        </sc-for>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Signal processing & effects</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Spatialization</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Algorithm design</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Creative audio direction</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Experimental audio & art</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">EEG signal analysis</span>
       </div>
     </div>
-
   </div>
 
   <div style="position: relative; height: 480px; overflow: hidden;">
@@ -87,53 +103,49 @@
   </div>
 
   <div id="services" style="border-top: 1px solid oklch(90% 0.008 80); max-width: 1280px; margin: 0 auto; padding: 88px 48px;">
-
     <div style="display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px; margin-bottom: 56px;">
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }};">Services</div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c;">Services</div>
       <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 32px; line-height: 1.3; margin: 0; max-width: 26ch;">Consulting across the signal chain, from concept to code.</h2>
     </div>
-
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: oklch(90% 0.008 80); border: 1px solid oklch(90% 0.008 80);">
-      <sc-for list="{{ services }}" as="svc" hint-placeholder-count="4">
-        <div style="background: oklch(98.3% 0.008 80); padding: 40px;">
-          <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 20px; margin: 0 0 12px;">{{ svc.title }}</h3>
-          <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); margin: 0;">{{ svc.description }}</p>
+      <div style="background: oklch(98.3% 0.008 80); padding: 40px;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 20px; margin: 0 0 12px;">Signal Processing & DSP</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); margin: 0;">Custom effects, analysis, and audio manipulation algorithms built for a specific creative or technical problem.</p>
         </div>
-      </sc-for>
+      <div style="background: oklch(98.3% 0.008 80); padding: 40px;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 20px; margin: 0 0 12px;">Spatialization</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); margin: 0;">Multichannel and object-based sound spatialization for concert works, installations, and immersive listening.</p>
+        </div>
+      <div style="background: oklch(98.3% 0.008 80); padding: 40px;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 20px; margin: 0 0 12px;">Algorithm & Software Design</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); margin: 0;">Bespoke audio software, from prototype to plugin, for composers and studios who need something that doesn’t exist yet.</p>
+        </div>
+      <div style="background: oklch(98.3% 0.008 80); padding: 40px;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 20px; margin: 0 0 12px;">Creative & Research Consulting</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: oklch(38% 0.015 80); margin: 0;">Direction on experimental audio projects, and signal-processing consulting for EEG and other research applications.</p>
+        </div>
     </div>
-
   </div>
 
   <div id="hider" style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); padding: 96px 48px;">
     <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Hider — Plugin, Coming Soon</div>
-
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Hider — Plugin, Coming Soon</div>
         <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 36px; line-height: 1.25; margin: 0 0 24px; max-width: 16ch;">A hidden track, in plain sight.</h2>
-
         <p style="font-size: 16px; line-height: 1.7; color: oklch(75% 0.01 80); max-width: 48ch; margin: 0 0 32px;">Hider encodes a second signal into the ultrasonic band of high-sample-rate audio — inaudible (except to your dog), riding inside the mix. An encoding plugin and a standalone decoder, built for anyone who wants to hide something in the music itself.</p>
-
-        <div style="display: flex; gap: 10px; max-width: 420px;">
-          <input type="email" placeholder="Your email" style="flex: 1; background: transparent; border: 1px solid oklch(45% 0.015 80); color: oklch(95% 0.005 80); padding: 12px 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px;">
-          <button style="background: {{ accent }}; color: oklch(98% 0.005 80); border: none; padding: 12px 22px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer;">Notify me</button>
-        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(70% 0.01 80);">In final testing — check back soon. Interested in beta testing? <a href="contact.html" style="color: #a8593c; border-bottom: 1px solid #a8593c; padding-bottom: 1px;">Get in touch</a>.</div>
       </div>
-
       <div style="display: flex; align-items: center; justify-content: center; height: 220px; position: relative;">
         <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;">
-          <sc-for list="{{ waveformPoints }}" as="pt" hint-placeholder-count="1">
-            <polyline points="{{ pt.audible }}" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
-            <polyline points="{{ pt.hidden }}" fill="none" stroke="{{ accent }}" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
-          </sc-for>
+          <polyline points="0,100.00 10,118.61 20,131.70 30,136.47 40,132.26 50,120.60 60,104.71 70,88.63 80,76.19 90,70.15 100,71.58 110,79.71 120,92.20 130,105.83 140,117.27 150,123.92 160,124.49 170,119.18 180,109.61 190,98.30 200,88.06 210,81.26 220,79.33 230,82.44 240,89.55 250,98.75 260,107.70 270,114.30 280,117.11 290,115.67 300,110.58 310,103.26 320,95.59 330,89.42 340,86.13 350,86.34 360,89.80 370,95.49 380,101.92 390,107.52" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
+          <polyline points="0,108.41 10,104.27 20,90.48 30,98.18 40,109.99 50,99.25 60,90.21 70,103.27 80,108.95 90,94.42 100,92.49 110,107.52 120,105.57 130,91.05 140,96.73 150,109.79 160,100.74 170,90.02 180,101.83 190,109.51 200,95.72 210,91.59 220,106.45 230,106.75 240,91.81 250,95.36 260,109.38 270,102.22 280,90.04 290,100.35 300,109.87 310,97.11 320,90.88 330,105.24 340,107.77 350,92.76 360,94.09 370,108.76 380,103.65 390,90.30" fill="none" stroke="#a8593c" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
         </svg>
       </div>
-
     </div>
   </div>
 
   <div id="contact" style="max-width: 1280px; margin: 0 auto; padding: 96px 48px; text-align: center;">
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Contact</div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Contact</div>
     <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 34px; line-height: 1.3; margin: 0 auto 28px; max-width: 20ch;">Have a project in mind? Let's talk.</h2>
     <a href="contact.html" style="display: inline-flex; padding: 14px 32px; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border-radius: 2px; font-size: 15px;">hello@echograph.studio</a>
   </div>
@@ -144,33 +156,5 @@
   </div>
 
 </div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 720},
-  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#a8593c&quot;, &quot;options&quot;: [&quot;#a8593c&quot;, &quot;#5b6b8c&quot;, &quot;#5c7a5c&quot;, &quot;#8a7a4a&quot;], &quot;tsType&quot;: &quot;string&quot;},
-  &quot;heroHeadline&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Signal processing for people who make sound.&quot;, &quot;tsType&quot;: &quot;string&quot;}
-}">
-class Component extends DCLogic {
-  renderVals() {
-    const accent = this.props.accentColor ?? '#a8593c';
-    const headline = this.props.heroHeadline ?? 'Signal processing for people who make sound.';
-    const seed = [18,34,52,29,61,44,72,38,55,26,48,66,31,58,40,70,24,49,63,35,53,20,45,68,32,57,41,60];
-    const bars = seed.map((h, i) => ({ height: h + '%', opacity: 0.35 + (i % 5) * 0.12 }));
-    const focusAreas = ['Signal processing & effects', 'Spatialization', 'Algorithm design', 'Creative audio direction', 'Experimental audio & art', 'EEG signal analysis'];
-    const services = [
-      { title: 'Signal Processing & DSP', description: 'Custom effects, analysis, and audio manipulation algorithms built for a specific creative or technical problem.' },
-      { title: 'Spatialization', description: 'Multichannel and object-based sound spatialization for concert works, installations, and immersive listening.' },
-      { title: 'Algorithm & Software Design', description: 'Bespoke audio software, from prototype to plugin, for composers and studios who need something that doesn\u2019t exist yet.' },
-      { title: 'Creative & Research Consulting', description: 'Direction on experimental audio projects, and signal-processing consulting for EEG and other research applications.' }
-    ];
-    const audible = 'M0,100 ' + Array.from({length: 40}, (_, i) => `L${i*10},${100 + Math.sin(i*0.5)*40*Math.exp(-i*0.03)}`).join(' ');
-    const hidden = 'M0,100 ' + Array.from({length: 40}, (_, i) => `L${i*10},${100 + Math.sin(i*1.7+1)*10}`).join(' ');
-    const waveformPoints = [{ audible: audible.replace(/M0,100 /, '').replace(/L/g, '').split(' ').map(s => s.split(',').join(',')).join(' '), hidden: hidden.replace(/M0,100 /, '').replace(/L/g, '').split(' ').map(s => s.split(',').join(',')).join(' ') }];
-    return { accent, headline, bars, focusAreas, services, waveformPoints };
-  }
-}
-
-</script>
 </body>
 </html>

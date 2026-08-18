@@ -13,64 +13,52 @@
 <meta property="og:image" content="https://echograph.studio/assets/erasure_photo5-web.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221f1c'/%3E%3Ctext x='32' y='45' font-family='Georgia, serif' font-size='38' fill='%23a8593c' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
-<script src="./support.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: oklch(98.3% 0.008 80); font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); }
+  a { text-decoration: none; }
+  .nav-link { color: oklch(22% 0.015 80); transition: color 0.15s; }
+  .nav-link:hover { color: #a8593c; }
+  input, textarea, select { font-family: 'IBM Plex Sans', sans-serif; }
+  input::placeholder, textarea::placeholder { color: oklch(60% 0.01 80); }
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: oklch(98.3% 0.008 80); }
-  a { text-decoration: none; }
-</style>
-</helmet>
-<div style="font-family: 'IBM Plex Sans', sans-serif; color: oklch(22% 0.015 80); min-height: 100vh;">
+<div style="min-height: 100vh;">
 
   <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
     <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
     <div style="display: flex; gap: 36px; font-size: 14px;">
-      <a href="about.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">About</a>
-      <a href="services.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Services</a>
-      <a href="work.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Work</a>
-      <a href="products.html" style="color: {{ accent }};">Products</a>
-      <a href="contact.html" style="color: oklch(22% 0.015 80);" style-hover="color: {{ accent }};">Contact</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="work.html" class="nav-link">Work</a>
+      <a href="products.html" style="color: #a8593c;">Products</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </nav>
 
   <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Products</div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Products</div>
     <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 40px; line-height: 1.2; margin: 0 0 24px; max-width: 20ch;">Software, when nothing off-the-shelf will do.</h1>
     <p style="font-size: 17px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 60ch; margin: 0;">Most of what I build starts as a solution to someone else's problem and occasionally one turns into something worth releasing on its own.</p>
   </div>
 
   <div style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); margin: 40px 0 0; padding: 88px 48px;">
     <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Hider — Coming Soon</div>
-
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Hider — Coming Soon</div>
         <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 34px; line-height: 1.25; margin: 0 0 24px; max-width: 16ch;">A hidden track, in plain sight.</h2>
-
-        <p style="font-size: 16px; line-height: 1.7; color: oklch(75% 0.01 80); max-width: 48ch; margin: 0 0 24px;">Hider encodes a second signal into the ultrasonic band of high-sample-rate audio — inaudible (except to your dog), riding inside the mix,. An encoding /decoding plugin and a standalone decoder, built for anyone who wants to hide something in the music itself.</p>
-
+        <p style="font-size: 16px; line-height: 1.7; color: oklch(75% 0.01 80); max-width: 48ch; margin: 0 0 24px;">Hider encodes a second signal into the ultrasonic band of high-sample-rate audio — inaudible (except to your dog), riding inside the mix. An encoding/decoding plugin and a standalone decoder, built for anyone who wants to hide something in the music itself.</p>
         <p style="font-size: 14px; line-height: 1.6; color: oklch(60% 0.01 80); max-width: 48ch; margin: 0 0 32px;">Requires audio at a high enough sample rate to carry an ultrasonic band. Encode with the plugin; decode with either the plugin or the standalone app.</p>
-
-        <div style="display: flex; gap: 10px; max-width: 420px;">
-          <input type="email" placeholder="Your email" style="flex: 1; background: transparent; border: 1px solid oklch(45% 0.015 80); color: oklch(95% 0.005 80); padding: 12px 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px;">
-          <button style="background: {{ accent }}; color: oklch(98% 0.005 80); border: none; padding: 12px 22px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer;">Notify me</button>
-        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(70% 0.01 80);">In final testing — check back soon. Interested in beta testing? <a href="contact.html" style="color: #a8593c; border-bottom: 1px solid #a8593c; padding-bottom: 1px;">Get in touch</a>.</div>
       </div>
-
       <div style="display: flex; align-items: center; justify-content: center; height: 220px; position: relative;">
         <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;">
-          <sc-for list="{{ waveformPoints }}" as="pt" hint-placeholder-count="1">
-            <polyline points="{{ pt.audible }}" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
-            <polyline points="{{ pt.hidden }}" fill="none" stroke="{{ accent }}" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
-          </sc-for>
+          <polyline points="0,100.00 10,118.61 20,131.70 30,136.47 40,132.26 50,120.60 60,104.71 70,88.63 80,76.19 90,70.15 100,71.58 110,79.71 120,92.20 130,105.83 140,117.27 150,123.92 160,124.49 170,119.18 180,109.61 190,98.30 200,88.06 210,81.26 220,79.33 230,82.44 240,89.55 250,98.75 260,107.70 270,114.30 280,117.11 290,115.67 300,110.58 310,103.26 320,95.59 330,89.42 340,86.13 350,86.34 360,89.80 370,95.49 380,101.92 390,107.52" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
+          <polyline points="0,108.41 10,104.27 20,90.48 30,98.18 40,109.99 50,99.25 60,90.21 70,103.27 80,108.95 90,94.42 100,92.49 110,107.52 120,105.57 130,91.05 140,96.73 150,109.79 160,100.74 170,90.02 180,101.83 190,109.51 200,95.72 210,91.59 220,106.45 230,106.75 240,91.81 250,95.36 260,109.38 270,102.22 280,90.04 290,100.35 300,109.87 310,97.11 320,90.88 330,105.24 340,107.77 350,92.76 360,94.09 370,108.76 380,103.65 390,90.30" fill="none" stroke="#a8593c" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
         </svg>
       </div>
-
     </div>
   </div>
 
@@ -84,22 +72,5 @@
   </div>
 
 </div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900},
-  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#a8593c&quot;, &quot;options&quot;: [&quot;#a8593c&quot;, &quot;#5b6b8c&quot;, &quot;#5c7a5c&quot;, &quot;#8a7a4a&quot;], &quot;tsType&quot;: &quot;string&quot;}
-}">
-class Component extends DCLogic {
-  renderVals() {
-    const accent = this.props.accentColor ?? '#a8593c';
-    const audible = Array.from({length: 40}, (_, i) => `${i*10},${100 + Math.sin(i*0.5)*40*Math.exp(-i*0.03)}`).join(' ');
-    const hidden = Array.from({length: 40}, (_, i) => `${i*10},${100 + Math.sin(i*1.7+1)*10}`).join(' ');
-    const waveformPoints = [{ audible, hidden }];
-    return { accent, waveformPoints };
-  }
-}
-
-</script>
 </body>
 </html>

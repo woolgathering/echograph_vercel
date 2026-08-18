@@ -11,7 +11,8 @@ Static site for Echograph audio consultancy. Plain HTML/CSS/JS — no build step
 - `products.html` — Products (Hider plugin)
 - `contact.html` — Contact
 - `assets/` — images and favicon (compressed for web)
-- `support.js` — shared site script
+
+Every page is plain, dependency-free HTML/CSS — no JS runtime required to render content.
 
 ## Local preview
 
