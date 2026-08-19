@@ -23,6 +23,26 @@
   input, textarea, select { font-family: 'IBM Plex Sans', sans-serif; }
   input::placeholder, textarea::placeholder { color: oklch(60% 0.01 80); }
   
+
+  .nav-toggle { display: none; background: none; border: none; padding: 8px; margin: -8px; cursor: pointer; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: oklch(22% 0.015 80); margin: 5px 0; border-radius: 1px; }
+  .nav-overlay { display: none; }
+  @media (max-width: 780px) {
+    .nav-toggle { display: block; }
+    .nav-links { position: fixed; top: 0; right: 0; bottom: 0; width: min(260px, 78vw); background: oklch(98.3% 0.008 80); flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; padding: 96px 32px 32px !important; box-shadow: -8px 0 32px oklch(0% 0 0 / 0.14); transform: translateX(100%); transition: transform 0.25s ease; z-index: 40; }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { padding: 12px 0; font-size: 16px !important; width: 100%; }
+    .nav-overlay.open { display: block; position: fixed; inset: 0; background: oklch(0% 0 0 / 0.3); z-index: 30; }
+  }
+  @media (max-width: 860px) {
+    .twocol { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 30px !important; }
+  }
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -34,7 +54,8 @@
 
   <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
     <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
-    <div style="display: flex; gap: 36px; font-size: 14px;">
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <div id="navLinks" class="nav-links" style="display: flex; gap: 36px; font-size: 14px;">
       <a href="about.html" style="color: #a8593c;">About</a>
       <a href="services.html" class="nav-link">Services</a>
       <a href="work.html" class="nav-link">Work</a>
@@ -42,13 +63,14 @@
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </nav>
+  <div id="navOverlay" class="nav-overlay" onclick="document.getElementById('navLinks').classList.remove('open');this.classList.remove('open')"></div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
+  <div class="twocol section-pad" style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c;">About</div>
     <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 40px; line-height: 1.25; margin: 0; max-width: 18ch;">Composer by training. Signal processor by necessity.</h1>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 40px 48px 88px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
+  <div class="twocol section-pad" style="max-width: 1280px; margin: 0 auto; padding: 40px 48px 88px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
     <div></div>
     <div>
       <p style="font-size: 16px; line-height: 1.75; color: oklch(38% 0.015 80); max-width: 62ch; margin: 0 0 22px;">I came to signal processing through composition and wanting to realize my own works. A BA and MM in music composition led to a PhD in computer music with a dissertation on periodicity transforms in discrete-time audio. That work sits at the border of mathematics and listening and it's where I still spend most of my time.</p>
@@ -59,29 +81,29 @@
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 0 48px 88px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px; border-top: 1px solid oklch(90% 0.008 80); padding-top: 56px;">
+  <div class="twocol section-pad" style="max-width: 1280px; margin: 0 auto; padding: 0 48px 88px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px; border-top: 1px solid oklch(90% 0.008 80); padding-top: 56px;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(50% 0.015 80);">Background</div>
     <div>
-        <div style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
+        <div class="twocol" style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(50% 0.015 80);">Education</div>
           <div style="font-size: 15px; color: oklch(30% 0.015 80);">PhD, Computer Music, UC San Diego — dissertation on periodicity transforms in discrete-time audio. Studied music &amp; philosophy at UCSD and music at the University of Washington.</div>
         </div>
-        <div style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
+        <div class="twocol" style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(50% 0.015 80);">Practice</div>
           <div style="font-size: 15px; color: oklch(30% 0.015 80);">Music performed by Inverted Space, the JACK Quartet, and the Seattle Chamber Players; presented at venues from the National Gallery of Art to Radiophrenia (Scotland) and CoCA (Seattle).</div>
         </div>
-        <div style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
+        <div class="twocol" style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(50% 0.015 80);">Research</div>
           <div style="font-size: 15px; color: oklch(30% 0.015 80);">Published in Frontiers in Human Neuroscience (brain-computer musical interfaces) and IEEE (spatialization algorithms).</div>
         </div>
-        <div style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
+        <div class="twocol" style="display: grid; grid-template-columns: 0.35fr 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid oklch(92% 0.008 80);">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(50% 0.015 80);">Collaboration</div>
           <div style="font-size: 15px; color: oklch(30% 0.015 80);">Roger Reynolds, Alvin Lucier, Steven Schick, red fish, blue fish, among others.</div>
         </div>
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 0 48px 96px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
+  <div class="twocol section-pad" style="max-width: 1280px; margin: 0 auto; padding: 0 48px 96px; display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 64px;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(50% 0.015 80);">Focus</div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px;">
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 14px; border: 1px solid oklch(85% 0.01 80); border-radius: 2px; color: oklch(30% 0.015 80);">Signal processing & effects</span>
@@ -93,12 +115,12 @@
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 8px 48px 96px; text-align: center; border-top: 1px solid oklch(90% 0.008 80);">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 8px 48px 96px; text-align: center; border-top: 1px solid oklch(90% 0.008 80);">
     <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 28px; line-height: 1.3; margin: 40px auto 28px; max-width: 22ch;">If something here sounds like your project, I'd like to hear about it.</h2>
     <a href="contact.html" style="display: inline-flex; padding: 14px 32px; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border-radius: 2px; font-size: 15px;">Get in touch</a>
   </div>
 
-  <div style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
+  <div class="section-pad" style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
     <div style="font-family: 'Source Serif 4', serif; font-size: 16px; color: oklch(22% 0.015 80);">Echograph</div>
     <div>© 2026 Echograph — Jacob Sundstrom.</div>
   </div>

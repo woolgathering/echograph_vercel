@@ -22,6 +22,26 @@
   .nav-link:hover { color: #a8593c; }
   input, textarea, select { font-family: 'IBM Plex Sans', sans-serif; }
   input::placeholder, textarea::placeholder { color: oklch(60% 0.01 80); }
+
+  .nav-toggle { display: none; background: none; border: none; padding: 8px; margin: -8px; cursor: pointer; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: oklch(22% 0.015 80); margin: 5px 0; border-radius: 1px; }
+  .nav-overlay { display: none; }
+  @media (max-width: 780px) {
+    .nav-toggle { display: block; }
+    .nav-links { position: fixed; top: 0; right: 0; bottom: 0; width: min(260px, 78vw); background: oklch(98.3% 0.008 80); flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; padding: 96px 32px 32px !important; box-shadow: -8px 0 32px oklch(0% 0 0 / 0.14); transform: translateX(100%); transition: transform 0.25s ease; z-index: 40; }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { padding: 12px 0; font-size: 16px !important; width: 100%; }
+    .nav-overlay.open { display: block; position: fixed; inset: 0; background: oklch(0% 0 0 / 0.3); z-index: 30; }
+  }
+  @media (max-width: 860px) {
+    .twocol { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 30px !important; }
+  }
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -33,7 +53,8 @@
 
   <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
     <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
-    <div style="display: flex; gap: 36px; font-size: 14px;">
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <div id="navLinks" class="nav-links" style="display: flex; gap: 36px; font-size: 14px;">
       <a href="about.html" class="nav-link">About</a>
       <a href="services.html" class="nav-link">Services</a>
       <a href="work.html" class="nav-link">Work</a>
@@ -41,15 +62,16 @@
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </nav>
+  <div id="navOverlay" class="nav-overlay" onclick="document.getElementById('navLinks').classList.remove('open');this.classList.remove('open')"></div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Products</div>
     <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 40px; line-height: 1.2; margin: 0 0 24px; max-width: 20ch;">Software, when nothing off-the-shelf will do.</h1>
     <p style="font-size: 17px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 60ch; margin: 0;">Most of what I build starts as a solution to someone else's problem and occasionally one turns into something worth releasing on its own.</p>
   </div>
 
-  <div style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); margin: 40px 0 0; padding: 88px 48px;">
-    <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+  <div class="section-pad" style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); margin: 40px 0 0; padding: 88px 48px;">
+    <div class="twocol" style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
       <div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Hider — Coming Soon</div>
         <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 34px; line-height: 1.25; margin: 0 0 24px; max-width: 16ch;">A hidden track, in plain sight.</h2>
@@ -66,11 +88,11 @@
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 88px 48px; text-align: center;">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 88px 48px; text-align: center;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(55% 0.015 80);">More to come</div>
   </div>
 
-  <div style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
+  <div class="section-pad" style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
     <div style="font-family: 'Source Serif 4', serif; font-size: 16px; color: oklch(22% 0.015 80);">Echograph</div>
     <div>© 2026 Echograph — Jacob Sundstrom.</div>
   </div>

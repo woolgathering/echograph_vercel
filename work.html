@@ -22,6 +22,26 @@
   .nav-link:hover { color: #a8593c; }
   input, textarea, select { font-family: 'IBM Plex Sans', sans-serif; }
   input::placeholder, textarea::placeholder { color: oklch(60% 0.01 80); }
+
+  .nav-toggle { display: none; background: none; border: none; padding: 8px; margin: -8px; cursor: pointer; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: oklch(22% 0.015 80); margin: 5px 0; border-radius: 1px; }
+  .nav-overlay { display: none; }
+  @media (max-width: 780px) {
+    .nav-toggle { display: block; }
+    .nav-links { position: fixed; top: 0; right: 0; bottom: 0; width: min(260px, 78vw); background: oklch(98.3% 0.008 80); flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; padding: 96px 32px 32px !important; box-shadow: -8px 0 32px oklch(0% 0 0 / 0.14); transform: translateX(100%); transition: transform 0.25s ease; z-index: 40; }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { padding: 12px 0; font-size: 16px !important; width: 100%; }
+    .nav-overlay.open { display: block; position: fixed; inset: 0; background: oklch(0% 0 0 / 0.3); z-index: 30; }
+  }
+  @media (max-width: 860px) {
+    .twocol { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 30px !important; }
+  }
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -33,7 +53,8 @@
 
   <nav style="display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; max-width: 1280px; margin: 0 auto;">
     <a href="index.html" style="font-family: 'Source Serif 4', serif; font-size: 20px; letter-spacing: 0.02em; color: oklch(22% 0.015 80);">Echograph</a>
-    <div style="display: flex; gap: 36px; font-size: 14px;">
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <div id="navLinks" class="nav-links" style="display: flex; gap: 36px; font-size: 14px;">
       <a href="about.html" class="nav-link">About</a>
       <a href="services.html" class="nav-link">Services</a>
       <a href="work.html" style="color: #a8593c;">Work</a>
@@ -41,17 +62,18 @@
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </nav>
+  <div id="navOverlay" class="nav-overlay" onclick="document.getElementById('navLinks').classList.remove('open');this.classList.remove('open')"></div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 40px;">
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Work</div>
     <h1 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 44px; line-height: 1.2; margin: 0 0 24px; max-width: 18ch;">Selected work, in sound and in code.</h1>
     <p style="font-size: 17px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 62ch; margin: 0;">A selection of performances, collaborations, and software built for composers, performers, and researchers — spanning real-time electronics, spatialization, and custom signal-processing tools.</p>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 56px 48px;">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 56px 48px;">
     <h2 style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(45% 0.015 80); margin: 0 0 40px; border-bottom: 1px solid oklch(90% 0.008 80); padding-bottom: 16px;">Performance &amp; Collaboration</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
       <div style="order: 1;">
         <img src="assets/work-poetica.jpg" alt="Poetica performance" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -63,7 +85,7 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
       <div style="order: 2;">
         <img src="assets/work-reynolds.jpg" alt="Reynolds collaboration" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -74,7 +96,7 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
       <div style="order: 1;">
         <img src="assets/work-lucier.jpg" alt="Slices performance" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -86,10 +108,10 @@
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 24px 48px 88px;">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 24px 48px 88px;">
     <h2 style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(45% 0.015 80); margin: 0 0 40px; border-bottom: 1px solid oklch(90% 0.008 80); padding-bottom: 16px;">Algorithms &amp; Software</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
       <div style="order: 1;">
         <img src="assets/work-fourreal.jpg" alt="Four Real-Time Algorithms code" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -109,7 +131,7 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px;">
       <div style="order: 2;">
         <img src="assets/work-boids.jpg" alt="Boids algorithm code" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -121,7 +143,7 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+    <div class="twocol" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
       <div style="order: 1;">
         <img src="assets/work-dbap.jpg" alt="DBAP algorithm figure" style="width: 100%; height: 320px; object-fit: cover; border-radius: 2px; display: block;">
       </div>
@@ -134,7 +156,7 @@
     </div>
   </div>
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 96px; text-align: center; border-top: 1px solid oklch(90% 0.008 80);">
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 96px; text-align: center; border-top: 1px solid oklch(90% 0.008 80);">
     <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 30px; line-height: 1.3; margin: 40px auto 28px; max-width: 20ch;">Have a project in mind? Let's talk.</h2>
     <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
       <a href="contact.html" style="display: inline-flex; padding: 14px 32px; background: oklch(22% 0.015 80); color: oklch(98% 0.005 80); border-radius: 2px; font-size: 15px;">Get in touch</a>
@@ -142,7 +164,7 @@
     </div>
   </div>
 
-  <div style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
+  <div class="section-pad" style="border-top: 1px solid oklch(90% 0.008 80); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; font-size: 13px; color: oklch(55% 0.015 80);">
     <div style="font-family: 'Source Serif 4', serif; font-size: 16px; color: oklch(22% 0.015 80);">Echograph</div>
     <div>&copy; 2026 Echograph. All rights reserved.</div>
   </div>
