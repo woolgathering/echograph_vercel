@@ -1,7 +1,6 @@
 const Stripe = require('stripe');
-const crypto = require('crypto');
-
-const DAYS = 7;
+const { signedToken, HOURS } = require('./_lib/token');
+const { sendMail } = require('./_lib/mail');
 
 function readRaw(req) {
   return new Promise((resolve, reject) => {
@@ -12,33 +11,15 @@ function readRaw(req) {
   });
 }
 
-function signedToken(sessionId) {
-  const exp = Math.floor(Date.now() / 1000) + DAYS * 86400;
-  const sig = crypto.createHmac('sha256', process.env.DOWNLOAD_SIGNING_SECRET).update(sessionId + '.' + exp).digest('hex');
-  return sessionId + '.' + exp + '.' + sig;
-}
-
-async function sendDownloadEmail(to, link, sessionId) {
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + process.env.RESEND_API_KEY,
-      'Content-Type': 'application/json',
-      'Idempotency-Key': 'hider-' + sessionId,
-    },
-    body: JSON.stringify({
-      from: process.env.EMAIL_FROM,
-      to,
-      subject: 'Your Hider download',
-      text: 'Thank you for buying Hider.\n\nDownload it here (link valid for ' + DAYS + ' days):\n' + link + '\n\nIf the link expires or anything goes wrong, reply to this email.\n\n— Echograph',
-    }),
-  });
-  if (!r.ok) throw new Error('Resend ' + r.status + ': ' + (await r.text()));
-}
+const sendDownloadEmail = (to, link) => sendMail(
+  to,
+  'Your Hider download',
+  'Thank you for buying Hider.\n\nDownload it here (link valid for ' + HOURS + ' hours from purchase):\n' + link + '\n\nIf the link expires or anything goes wrong, reply to this email.\n\n— Echograph'
+);
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-02-25.preview' });
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   let event;
   try {
     const raw = await readRaw(req);
@@ -50,8 +31,8 @@ module.exports = async (req, res) => {
     const s = event.data.object;
     if (s.payment_status === 'paid' && s.customer_details && s.customer_details.email) {
       try {
-        const link = 'https://' + req.headers.host + '/api/download?t=' + signedToken(s.id);
-        await sendDownloadEmail(s.customer_details.email, link, s.id);
+        const link = 'https://' + req.headers.host + '/api/download?t=' + signedToken(s.id, s.created);
+        await sendDownloadEmail(s.customer_details.email, link);
       } catch (err) {
         console.error('delivery failed for', s.id, err.message);
         return res.status(500).send('delivery failed');

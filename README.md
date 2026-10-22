@@ -31,7 +31,7 @@ npx serve .
 
 ## Hider checkout (Stripe Managed Payments)
 
-Serverless functions in `api/` (Vercel): `create-checkout-session` (Buy button), `stripe-webhook` (emails a signed link on `checkout.session.completed`), `download` (verifies the link, redirects to the private GitHub release asset). Env vars: see `.env.example`. Webhook endpoint: `/api/stripe-webhook`.
+Serverless functions in `api/` (Vercel). See `CLAUDE.md` for the flow and env vars. Installers live in a private Vercel Blob store; the paid download link is valid 48h from purchase.
 
 ## TODO before launch
 

@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     return res.status(405).end();
   }
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2026-02-25.preview' });
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     if (!cachedPrice) {
       const product = await stripe.products.retrieve(process.env.STRIPE_HIDER_PRODUCT_ID);
       cachedPrice = typeof product.default_price === 'string' ? product.default_price : product.default_price.id;
@@ -17,6 +17,7 @@ module.exports = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [{ price: cachedPrice, quantity: 1 }],
+      integration_identifier: 'echograph-hider-kqzvmtxa',
       managed_payments: { enabled: true },
       success_url: base + '/success.html?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: base + '/products.html',

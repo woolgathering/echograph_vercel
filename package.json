@@ -2,9 +2,11 @@
   "name": "echograph",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "dependencies": {
-    "stripe": "^18.0.0"
+    "@vercel/blob": "^2.8.2",
+    "nodemailer": "^10.2.0",
+    "stripe": "^22.6.2"
   }
 }
