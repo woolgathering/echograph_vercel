@@ -29,9 +29,12 @@ npx serve .
 3. Framework preset: **Other** (static). No build command, output directory is the repo root.
 4. Deploy.
 
+## Hider checkout (Stripe Managed Payments)
+
+Serverless functions in `api/` (Vercel): `create-checkout-session` (Buy button), `stripe-webhook` (emails a signed link on `checkout.session.completed`), `download` (verifies the link, redirects to the private GitHub release asset). Env vars: see `.env.example`. Webhook endpoint: `/api/stripe-webhook`.
+
 ## TODO before launch
 
 - Add real images to the Work page entries.
 - Wire up a booking calendar (Calendly/Cal.com) to replace placeholder links in Contact/Services/Work.
-- Once Hider ships: add the real checkout link (Gumroad/Lemon Squeezy) and swap the "in final testing" section on Products for the purchase button.
 - Copy pass on About (grammar fixes flagged).

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Products | Echograph</title>
-<meta name="description" content="Hider, an ultrasonic hidden-track plugin from Echograph — in final testing, with beta access available on request.">
+<meta name="description" content="Hider, an ultrasonic hidden-track plugin from Echograph — now available, $30.">
 <link rel="canonical" href="https://echograph.studio/products">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Products | Echograph">
-<meta property="og:description" content="Hider, an ultrasonic hidden-track plugin from Echograph — in final testing, with beta access available on request.">
+<meta property="og:description" content="Hider, an ultrasonic hidden-track plugin from Echograph — now available, $30.">
 <meta property="og:url" content="https://echograph.studio/products">
 <meta property="og:image" content="https://echograph.studio/assets/erasure_photo5-web.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,17 +73,40 @@
   <div class="section-pad" style="background: oklch(20% 0.015 80); color: oklch(95% 0.005 80); margin: 40px 0 0; padding: 88px 48px;">
     <div class="twocol" style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Hider — Coming Soon</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Hider</div>
         <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 34px; line-height: 1.25; margin: 0 0 24px; max-width: 16ch;">A hidden track, in plain sight.</h2>
         <p style="font-size: 16px; line-height: 1.7; color: oklch(75% 0.01 80); max-width: 48ch; margin: 0 0 24px;">Hider encodes a second signal into the ultrasonic band of high-sample-rate audio — inaudible (except to your dog), riding inside the mix. An encoding/decoding plugin and a standalone decoder, built for anyone who wants to hide something in the music itself.</p>
         <p style="font-size: 14px; line-height: 1.6; color: oklch(60% 0.01 80); max-width: 48ch; margin: 0 0 32px;">Requires audio at a high enough sample rate to carry an ultrasonic band. Encode with the plugin; decode with either the plugin or the standalone app.</p>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(70% 0.01 80);">In final testing — check back soon. Interested in beta testing? <a href="contact.html" style="color: #a8593c; border-bottom: 1px solid #a8593c; padding-bottom: 1px;">Get in touch</a>.</div>
+        <form method="POST" action="/api/create-checkout-session" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 0 0 28px;">
+          <button type="submit" style="font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; padding: 14px 28px; background: #a8593c; color: oklch(98% 0.005 80); border: none; border-radius: 2px; cursor: pointer;">Buy Hider — $30</button>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.7; color: oklch(70% 0.01 80);">VST3 · AU · Standalone<br>macOS (Apple Silicon &amp; Intel) · Linux</div>
+        </form>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: oklch(70% 0.01 80);">Interested in beta testing? <a href="contact.html" style="color: #a8593c; border-bottom: 1px solid #a8593c; padding-bottom: 1px;">Get in touch</a>.</div>
       </div>
-      <div style="display: flex; align-items: center; justify-content: center; height: 220px; position: relative;">
-        <svg width="100%" height="100%" viewBox="0 0 400 200" style="overflow: visible;">
-          <polyline points="0,100.00 10,118.61 20,131.70 30,136.47 40,132.26 50,120.60 60,104.71 70,88.63 80,76.19 90,70.15 100,71.58 110,79.71 120,92.20 130,105.83 140,117.27 150,123.92 160,124.49 170,119.18 180,109.61 190,98.30 200,88.06 210,81.26 220,79.33 230,82.44 240,89.55 250,98.75 260,107.70 270,114.30 280,117.11 290,115.67 300,110.58 310,103.26 320,95.59 330,89.42 340,86.13 350,86.34 360,89.80 370,95.49 380,101.92 390,107.52" fill="none" stroke="oklch(55% 0.01 80)" stroke-width="1.5"></polyline>
-          <polyline points="0,108.41 10,104.27 20,90.48 30,98.18 40,109.99 50,99.25 60,90.21 70,103.27 80,108.95 90,94.42 100,92.49 110,107.52 120,105.57 130,91.05 140,96.73 150,109.79 160,100.74 170,90.02 180,101.83 190,109.51 200,95.72 210,91.59 220,106.45 230,106.75 240,91.81 250,95.36 260,109.38 270,102.22 280,90.04 290,100.35 300,109.87 310,97.11 320,90.88 330,105.24 340,107.77 350,92.76 360,94.09 370,108.76 380,103.65 390,90.30" fill="none" stroke="#a8593c" stroke-width="1.5" stroke-dasharray="2,4"></polyline>
-        </svg>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="assets/hider-encoder-plugin.png" alt="Hider encoder plugin interface" style="width: 100%; max-height: 520px; object-fit: contain; display: block; border-radius: 6px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="section-pad" style="max-width: 1280px; margin: 0 auto; padding: 88px 48px 24px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a8593c; margin-bottom: 24px;">Free decoders</div>
+    <h2 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 30px; line-height: 1.25; margin: 0 0 16px; max-width: 24ch;">Decode only, at no cost.</h2>
+    <p style="font-size: 16px; line-height: 1.7; color: oklch(38% 0.015 80); max-width: 56ch; margin: 0 0 48px;">Anyone can listen to a Hider track. These decoder-only versions can't encode, and they're free to download and share.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="background: oklch(20% 0.015 80); border-radius: 2px; height: 300px; display: flex; align-items: center; justify-content: center; padding: 20px;"><img src="assets/hider-decoder-plugin.png" alt="Hider decoder plugin interface" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;"></div>
+        <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 22px; margin: 0;">Hider Decoder — Plugin</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: oklch(38% 0.015 80); margin: 0; max-width: 46ch;">A decoder-only version of the Hider plugin.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: oklch(50% 0.015 80);">VST3 · AU · macOS (Apple Silicon &amp; Intel) · Linux</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="https://github.com/OWNER/hider-decoder/releases/latest/download/Hider-Decoder-Plugin-macOS.pkg" style="display: inline-flex; padding: 11px 20px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Download for macOS</a><a href="https://github.com/OWNER/hider-decoder/releases/latest/download/Hider-Decoder-Plugin-Linux.zip" style="display: inline-flex; padding: 11px 20px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Download for Linux</a></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="background: oklch(20% 0.015 80); border-radius: 2px; height: 300px; display: flex; align-items: center; justify-content: center; padding: 20px;"><img src="assets/hider-decoder-app.png" alt="Hider decoder standalone app, styled as a portable disc player" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;"></div>
+        <h3 style="font-family: 'Source Serif 4', serif; font-weight: 400; font-size: 22px; margin: 0;">Hider Decoder — App</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: oklch(38% 0.015 80); margin: 0; max-width: 46ch;">A standalone Hider decoder. Drag and drop the file you want to decode.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: oklch(50% 0.015 80);">Standalone · macOS (Apple Silicon &amp; Intel) · Linux</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="https://github.com/OWNER/hider-decoder/releases/latest/download/Hider-Decoder-App-macOS.dmg" style="display: inline-flex; padding: 11px 20px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Download for macOS</a><a href="https://github.com/OWNER/hider-decoder/releases/latest/download/Hider-Decoder-App-Linux.zip" style="display: inline-flex; padding: 11px 20px; border: 1px solid oklch(22% 0.015 80); color: oklch(22% 0.015 80); border-radius: 2px; font-size: 14px;">Download for Linux</a></div>
       </div>
     </div>
   </div>
