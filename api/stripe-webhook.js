@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 const { signedToken, HOURS } = require('./_lib/token');
 const { sendMail } = require('./_lib/mail');
+const { downloadEmail } = require('./_lib/email');
 
 function readRaw(req) {
   return new Promise((resolve, reject) => {
@@ -11,11 +12,10 @@ function readRaw(req) {
   });
 }
 
-const sendDownloadEmail = (to, link) => sendMail(
-  to,
-  'Your Hider download',
-  'Thank you for buying Hider.\n\nDownload it here (link valid for ' + HOURS + ' hours from purchase):\n' + link + '\n\nIf the link expires or anything goes wrong, reply to this email.\n\n— Echograph'
-);
+const sendDownloadEmail = (to, link) => {
+  const { text, html } = downloadEmail(link, HOURS);
+  return sendMail(to, 'Your Hider download', text, html);
+};
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
     const s = event.data.object;
     if (s.payment_status === 'paid' && s.customer_details && s.customer_details.email) {
       try {
-        const link = 'https://' + req.headers.host + '/api/download?t=' + signedToken(s.id, s.created);
+        const link = 'https://' + req.headers.host + '/success.html?t=' + signedToken(s.id, s.created);
         await sendDownloadEmail(s.customer_details.email, link);
       } catch (err) {
         console.error('delivery failed for', s.id, err.message);

@@ -7,6 +7,6 @@ const transport = nodemailer.createTransport({
   auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
 });
 
-const sendMail = (to, subject, text) => transport.sendMail({ from: process.env.EMAIL_FROM, to, subject, text });
+const sendMail = (to, subject, text, html) => transport.sendMail({ from: process.env.EMAIL_FROM, to, subject, text, html });
 
 module.exports = { sendMail };

@@ -24,13 +24,13 @@ Do not hand-edit these generated or vendored files:
 Hider is the paid product on `products.html`. Vercel functions in `api/` (CommonJS, `stripe` SDK default API version, Stripe Managed Payments). Shared helpers live in `api/_lib/` (underscore-prefixed, so not routed):
 
 1. `create-checkout-session.js`: the Buy form POSTs here. Resolves the price from the product's `default_price` (module-cached), creates a `mode: 'payment'` Session with `managed_payments: { enabled: true }`, 303-redirects to Stripe. Returns to `/success.html?session_id=…`.
-2. `success.html` fetches `session-link.js`, which retrieves the Session from Stripe, requires `payment_status === 'paid'`, and returns a signed `/api/download?t=…` link shown immediately.
-3. `stripe-webhook.js`: on `checkout.session.completed` emails the same kind of link via Gmail SMTP (`_lib/mail.js`, nodemailer). Needs the raw body, so `config.api.bodyParser = false` must stay. Returns 500 on send failure so Stripe retries.
-4. `download.js`: verifies the token, lists private Blob objects under `hider/`, and streams the chosen one (`_lib/blob.js`).
+2. `success.html` calls `session-link.js` with either `session_id` (right after paying) or `t` (email link) and renders one download button per file under `hider/`. `session-link.js` verifies payment with Stripe or the token and returns signed `/api/download?t=…&asset=…` URLs.
+3. `stripe-webhook.js`: on `checkout.session.completed` emails a `/success.html?t=…` link via Gmail SMTP (`_lib/mail.js`, nodemailer; HTML body in `_lib/email.js`, styled to match the site). Needs the raw body, so `config.api.bodyParser = false` must stay. Returns 500 on send failure so Stripe retries.
+4. `download.js`: verifies the token and streams the chosen asset (`_lib/blob.js`); without `asset` it redirects to `/success.html?t=…`.
 5. `get.js`: free Decoder downloads (`/api/get?f=<file>`), serves `free/` blobs without a token and logs `free-download <file>`; the only tracking.
 
 Tokens (`_lib/token.js`) are `<session_id>.<exp>.<hmac>` with `exp = purchase time + 48h`, so refreshing the success page never extends a link.
 
 Files live in one private Vercel Blob store (`echograph-hider`) under `hider/` (paid) and `free/`. Blob auth is Vercel OIDC + `BLOB_STORE_ID`, which exist only in Production/Preview, so local scripts must use `vercel env pull .env.production.local --environment=production`. Product files are uploaded manually; there is no upload script in the repo.
 
-Env vars (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_HIDER_PRODUCT_ID`, `STRIPE_WEBHOOK_SECRET`, `DOWNLOAD_SIGNING_SECRET`, `SMTP_USER`, `SMTP_PASS` (Google app password), `EMAIL_FROM`, `BLOB_STORE_ID`. Webhook endpoint: `/api/stripe-webhook`.
+Env vars (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_HIDER_PRODUCT_ID`, `STRIPE_WEBHOOK_SECRET`, `DOWNLOAD_SIGNING_SECRET`, `SMTP_USER` (must be the Google account's primary address, not an alias), `SMTP_PASS` (Google app password), `EMAIL_FROM`, `BLOB_STORE_ID`. Webhook endpoint: `/api/stripe-webhook`.
