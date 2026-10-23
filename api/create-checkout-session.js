@@ -18,6 +18,7 @@ module.exports = async (req, res) => {
       mode: 'payment',
       line_items: [{ price: cachedPrice, quantity: 1 }],
       integration_identifier: 'echograph-hider-kqzvmtxa',
+      allow_promotion_codes: true,
       managed_payments: { enabled: true },
       success_url: base + '/success.html?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: base + '/products.html',
