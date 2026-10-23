@@ -29,8 +29,10 @@ Hider is the paid product on `products.html`. Vercel functions in `api/` (Common
 4. `download.js`: verifies the token and streams the chosen asset (`_lib/blob.js`); without `asset` it redirects to `/success.html?t=…`.
 5. `get.js`: free Decoder downloads (`/api/get?f=<file>`), serves `free/` blobs without a token and logs `free-download <file>`; the only tracking.
 
+`_lib/notify.js` runs after a successful customer email: it mails a sale notice to `NOTIFY_TO` (default `hello@echograph.studio`) and, if `SHEET_WEBHOOK_URL` is set, POSTs a row to a Google Apps Script web app (`tools/sheets-logger.gs`). Both are best-effort and never fail the webhook. Checkout enables `allow_promotion_codes`; 100%-off orders arrive as `payment_status: no_payment_required` and are treated as paid.
+
 Tokens (`_lib/token.js`) are `<session_id>.<exp>.<hmac>` with `exp = purchase time + 48h`, so refreshing the success page never extends a link.
 
 Files live in one private Vercel Blob store (`echograph-hider`) under `hider/` (paid) and `free/`. Blob auth is Vercel OIDC + `BLOB_STORE_ID`, which exist only in Production/Preview, so local scripts must use `vercel env pull .env.production.local --environment=production`. Product files are uploaded manually; there is no upload script in the repo.
 
-Env vars (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_HIDER_PRODUCT_ID`, `STRIPE_WEBHOOK_SECRET`, `DOWNLOAD_SIGNING_SECRET`, `SMTP_USER` (must be the Google account's primary address, not an alias), `SMTP_PASS` (Google app password), `EMAIL_FROM`, `BLOB_STORE_ID`. Webhook endpoint: `/api/stripe-webhook`.
+Env vars (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_HIDER_PRODUCT_ID`, `STRIPE_WEBHOOK_SECRET`, `DOWNLOAD_SIGNING_SECRET`, `SMTP_USER` (must be the Google account's primary address, not an alias), `SMTP_PASS` (Google app password), `EMAIL_FROM`, `BLOB_STORE_ID`; optional `NOTIFY_TO`, `SHEET_WEBHOOK_URL`, `SHEET_WEBHOOK_TOKEN`. Webhook endpoint: `/api/stripe-webhook`.

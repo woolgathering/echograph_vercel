@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       if (!/^cs_[A-Za-z0-9_]+$/.test(sid || '')) return res.status(400).json({ error: 'bad session' });
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
       const s = await stripe.checkout.sessions.retrieve(sid);
-      if (s.payment_status !== 'paid') return res.status(402).json({ error: 'not paid' });
+      if (s.payment_status !== 'paid' && s.payment_status !== 'no_payment_required') return res.status(402).json({ error: 'not paid' });
       token = signedToken(s.id, s.created);
     }
     const assets = (await listHiderAssets()).map((a) => ({
